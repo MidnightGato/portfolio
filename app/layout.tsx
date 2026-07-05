@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cesar Lopez — Business Analyst",
     description: "Business analyst turning data into solutions.",
-    url: "https://cesarlopez.co",
+    url: "https://cesarlopez.dev",
     siteName: "Cesar Lopez Portfolio",
     locale: "en_US",
     type: "website",
