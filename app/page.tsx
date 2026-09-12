@@ -8,32 +8,241 @@ type Screenshot = {
   caption: string;
 };
 
-const screenshots: Screenshot[] = [
+type Detail = {
+  label: string;
+  body: string;
+};
+
+type Project = {
+  id: string;
+  title: string;
+  meta: string;
+  url?: string;
+  badge?: string;
+  subtitle: string;
+  screenshots: Screenshot[];
+  details: Detail[];
+  stack: string[];
+};
+
+const projects: Project[] = [
   {
-    src: "/screenshots/dashboard.png",
-    alt: "Legacy Analytics main dashboard showing business health score",
-    caption: "Business Health Score with 8 operational vitals",
+    id: "legacy",
+    title: "Legacy Analytics",
+    meta: "2026 · rgvlegacy.com",
+    url: "https://rgvlegacy.com",
+    subtitle:
+      "Giving family-owned businesses the analytics tools that only corporations used to have — so they can compete on the same level.",
+    screenshots: [
+      {
+        src: "/screenshots/dashboard.png",
+        alt: "Legacy Analytics main dashboard showing business health score",
+        caption: "Business Health Score with 8 operational vitals",
+      },
+      {
+        src: "/screenshots/tools.png",
+        alt: "Tools dropdown showing 7 available analytics tools",
+        caption: "Seven integrated analytics tools",
+      },
+      {
+        src: "/screenshots/sales.png",
+        alt: "Sales dashboard tool in action",
+        caption: "Sales Dashboard with real-time data",
+      },
+      {
+        src: "/screenshots/mobile.png",
+        alt: "Mobile responsive view of Legacy Analytics",
+        caption: "Fully responsive on mobile",
+      },
+    ],
+    details: [
+      {
+        label: "PROBLEM",
+        body: "Family businesses run on gut instinct because enterprise analytics tools are built for corporations — expensive, complex, and out of reach. Meanwhile, chains use data to outmaneuver them at every turn.",
+      },
+      {
+        label: "APPROACH",
+        body: "Interviewed local RGV business owners to understand how they actually make decisions. Designed tools around the data they already have — not the data enterprise software expects them to collect.",
+      },
+      {
+        label: "SOLUTION",
+        body: "A bilingual platform with 7 essential tools — sales, cash flow, expenses, taxes, funding, succession, reviews — in one place. Simple enough for a first-time user. Powerful enough to compete.",
+      },
+      {
+        label: "IMPACT",
+        body: "Created a pathway for small business owners who want to level up but never had the tools. Pivoted from gated tiers to a 14-day free trial after user feedback revealed conversion friction was the real barrier — not price.",
+      },
+    ],
+    stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Recharts", "Tailwind"],
   },
   {
-    src: "/screenshots/tools.png",
-    alt: "Tools dropdown showing 7 available analytics tools",
-    caption: "Seven integrated analytics tools",
+    id: "glowtique",
+    title: "Glowtique Med Spa",
+    meta: "2026 · Client · Shopify",
+    badge: "Private until launch",
+    subtitle:
+      "A storefront for a regulated medical practice, built around what it can sell online, what it can only describe, and who is allowed to buy.",
+    screenshots: [
+      {
+        src: "/screenshots/glowtique-home.png",
+        alt: "Glowtique home page hero with Book a consultation and See treatments buttons",
+        caption: "Home: every treatment leads to a consultation",
+      },
+      {
+        src: "/screenshots/glowtique-services.png",
+        alt: "Glowtique services page showing body contouring and skin treatments with Spanish subtitles",
+        caption: "15 services in four groups, each with a Spanish subtitle",
+      },
+      {
+        src: "/screenshots/glowtique-location-map.png",
+        alt: "Embedded Google map pinned at the Glowtique location in Edinburg, Texas",
+        caption: "One confirmed location with an embedded map, no API key or billing",
+      },
+    ],
+    details: [
+      {
+        label: "PROBLEM",
+        body: "A med spa in Edinburg needed a site that sells some products online, only informs about others, and sends every treatment to a consultation. Their own attempt at editing the theme had stalled, and their location details came off a flyer that turned out to be out of date.",
+      },
+      {
+        label: "APPROACH",
+        body: "Audited the store and the flyer before building anything. Raised two compliance risks with the owner up front: health information in booking forms, and patient consent for before-and-after photos. Confirmed the locations directly, which cut three listed locations down to one.",
+      },
+      {
+        label: "SOLUTION",
+        body: "Five pages on Shopify's Horizon theme. 15 services in four groups with Spanish subtitles. 11 products and 34 variants imported from a generated catalogue. A tag-driven purchase rule with three states, so the owner decides what sells, what only informs, and who can buy, without touching code.",
+      },
+      {
+        label: "PROCESS",
+        body: "After three rejected uploads from guessed settings, I wrote a validator against the theme's own schemas. It found 94 more invalid settings that Shopify had been silently ignoring. Every push starts by pulling the live theme and diffing it, which caught the owner's own edits before they were overwritten.",
+      },
+    ],
+    stack: ["Shopify", "Liquid", "JSON templates", "Node.js", "Shopify CLI", "Git"],
   },
   {
-    src: "/screenshots/sales.png",
-    alt: "Sales dashboard tool in action",
-    caption: "Sales Dashboard with real-time data",
-  },
-  {
-    src: "/screenshots/mobile.png",
-    alt: "Mobile responsive view of Legacy Analytics",
-    caption: "Fully responsive on mobile",
+    id: "wichos",
+    title: "Wichos Paleteria y Neveria",
+    meta: "2026 · Client · wichossnacks.com",
+    url: "https://wichossnacks.com",
+    subtitle:
+      "A family business site where Spanish comes first and nothing is claimed that the owners didn't say.",
+    screenshots: [
+      {
+        src: "/screenshots/wichos-home.png",
+        alt: "Wichos home page in Spanish with the 100% fruta natural headline",
+        caption: "Spanish by default, with an English toggle",
+      },
+      {
+        src: "/screenshots/wichos-story.png",
+        alt: "Wichos Our Story page in Spanish",
+        caption: "Our Story, rebuilt around the owners' own words",
+      },
+    ],
+    details: [
+      {
+        label: "PROBLEM",
+        body: "A family-owned paleteria in McAllen, open since 2017, with a Spanish-first customer base and no site that spoke to it.",
+      },
+      {
+        label: "APPROACH",
+        body: "Rebuilt the story page around the owners' own words, and removed four pieces of copy written during the concept that the owners had never confirmed, including an ingredient claim.",
+      },
+      {
+        label: "SOLUTION",
+        body: "A fast static site with no framework, Spanish by default with an English toggle. A custom flavor request form with validation and spam protection. Photo slots that fall back to illustrations until real photos arrive.",
+      },
+      {
+        label: "PROCESS",
+        body: "Translation runs from one dictionary. A coverage check compares every visible string on every page against it, because a missing line silently falls back to English and looks fine to anyone reading in English.",
+      },
+    ],
+    stack: ["HTML", "CSS", "JavaScript", "Cloudflare Pages", "Git"],
   },
 ];
 
+function ProjectCard({ project }: { project: Project }) {
+  const [current, setCurrent] = useState(0);
+  const shots = project.screenshots;
+
+  const next = () => setCurrent((prev) => (prev === shots.length - 1 ? 0 : prev + 1));
+  const prev = () => setCurrent((prev) => (prev === 0 ? shots.length - 1 : prev - 1));
+
+  return (
+    <div className="project-card" id={`project-${project.id}`}>
+      <div className="project-header">
+        <div className="project-title">{project.title}</div>
+        <div className="project-meta">
+          {project.url ? (
+            <a className="project-link" href={project.url} target="_blank" rel="noopener noreferrer">
+              {project.meta}
+            </a>
+          ) : (
+            project.meta
+          )}
+          {project.badge && <span className="project-badge">{project.badge}</span>}
+        </div>
+      </div>
+      <div className="project-subtitle">{project.subtitle}</div>
+
+      {/* SCREENSHOT CAROUSEL */}
+      <div className="screenshot-wrap">
+        <div className="screenshot-container">
+          {shots.length > 1 && (
+            <button className="screenshot-arrow" onClick={prev} aria-label={`Previous ${project.title} screenshot`}>
+              ←
+            </button>
+          )}
+          <div className="screenshot-frame">
+            <img src={shots[current].src} alt={shots[current].alt} />
+          </div>
+          {shots.length > 1 && (
+            <button className="screenshot-arrow" onClick={next} aria-label={`Next ${project.title} screenshot`}>
+              →
+            </button>
+          )}
+        </div>
+        <div className="screenshot-caption">{shots[current].caption}</div>
+        {shots.length > 1 && (
+          <div className="screenshot-nav">
+            {shots.map((_, i) => (
+              <button
+                key={i}
+                className={`screenshot-dot ${i === current ? "active" : ""}`}
+                onClick={() => setCurrent(i)}
+                aria-label={`View ${project.title} screenshot ${i + 1}`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* PROJECT DETAILS */}
+      <div className="project-details">
+        {project.details.map((d) => (
+          <div className="detail-block" key={d.label}>
+            <div className="detail-label">◦ {d.label}</div>
+            <div className="detail-body">{d.body}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* TECH STACK */}
+      <div className="tech-section">
+        <div className="detail-label" style={{ marginBottom: "10px" }}>◦ TECH STACK</div>
+        <div className="tech-tags">
+          {project.stack.map((t) => (
+            <span className="tech-tag" key={t}>
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Portfolio() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
-  const [currentScreenshot, setCurrentScreenshot] = useState(0);
 
   useEffect(() => {
     const saved = localStorage.getItem("theme");
@@ -53,14 +262,6 @@ export default function Portfolio() {
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const nextScreenshot = () => {
-    setCurrentScreenshot((prev) => (prev === screenshots.length - 1 ? 0 : prev + 1));
-  };
-
-  const prevScreenshot = () => {
-    setCurrentScreenshot((prev) => (prev === 0 ? screenshots.length - 1 : prev - 1));
   };
 
   return (
@@ -368,6 +569,12 @@ export default function Portfolio() {
         }
 
         /* === PROJECT CARD === */
+        .project-list {
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+        }
+
         .project-card {
           background: var(--card-bg);
           border: 1px solid var(--card-border);
@@ -397,6 +604,32 @@ export default function Portfolio() {
           font-size: 12px;
           color: var(--matcha);
           font-style: italic;
+          display: flex;
+          align-items: baseline;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+
+        .project-link {
+          color: var(--matcha);
+          text-decoration: none;
+          border-bottom: 1px solid transparent;
+          transition: border-color 0.2s;
+        }
+
+        .project-link:hover {
+          border-bottom-color: var(--matcha);
+        }
+
+        .project-badge {
+          font-family: 'Inter', sans-serif;
+          font-style: normal;
+          font-size: 10px;
+          letter-spacing: 0.08em;
+          color: var(--matcha-dark);
+          background: var(--matcha-tint);
+          border-radius: 4px;
+          padding: 3px 8px;
         }
 
         .project-subtitle {
@@ -619,6 +852,7 @@ export default function Portfolio() {
           .nav-links { gap: 12px; }
           .nav-link { font-size: 12px; }
           .info-grid { grid-template-columns: 1fr; }
+          .project-card { padding: 20px; }
           .project-details { grid-template-columns: 1fr; }
           .skills-grid { grid-template-columns: 1fr; }
           .hero-title { font-size: 2.2rem; }
@@ -708,98 +942,13 @@ export default function Portfolio() {
           <span className="ornament-line" />
         </div>
 
-        {/* FEATURED WORK */}
+        {/* WORK */}
         <section className="section" id="work">
-          <div className="section-label">— 02 · FEATURED WORK</div>
-
-          <div className="project-card">
-            <div className="project-header">
-              <div className="project-title">Legacy Analytics</div>
-              <div className="project-meta">2026 · rgvlegacy.com</div>
-            </div>
-            <div className="project-subtitle">
-              Giving family-owned businesses the analytics tools that only corporations used to have — so they can compete on the same level.
-            </div>
-
-            {/* SCREENSHOT CAROUSEL */}
-            <div className="screenshot-wrap">
-              <div className="screenshot-container">
-                <button
-                  className="screenshot-arrow"
-                  onClick={prevScreenshot}
-                  aria-label="Previous screenshot"
-                >
-                  ←
-                </button>
-                <div className="screenshot-frame">
-                  <img
-                    src={screenshots[currentScreenshot].src}
-                    alt={screenshots[currentScreenshot].alt}
-                  />
-                </div>
-                <button
-                  className="screenshot-arrow"
-                  onClick={nextScreenshot}
-                  aria-label="Next screenshot"
-                >
-                  →
-                </button>
-              </div>
-              <div className="screenshot-caption">
-                {screenshots[currentScreenshot].caption}
-              </div>
-              <div className="screenshot-nav">
-                {screenshots.map((_, i) => (
-                  <button
-                    key={i}
-                    className={`screenshot-dot ${i === currentScreenshot ? "active" : ""}`}
-                    onClick={() => setCurrentScreenshot(i)}
-                    aria-label={`View screenshot ${i + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* PROJECT DETAILS */}
-            <div className="project-details">
-              <div className="detail-block">
-                <div className="detail-label">◦ PROBLEM</div>
-                <div className="detail-body">
-                  Family businesses run on gut instinct because enterprise analytics tools are built for corporations — expensive, complex, and out of reach. Meanwhile, chains use data to outmaneuver them at every turn.
-                </div>
-              </div>
-              <div className="detail-block">
-                <div className="detail-label">◦ APPROACH</div>
-                <div className="detail-body">
-                  Interviewed local RGV business owners to understand how they actually make decisions. Designed tools around the data they already have — not the data enterprise software expects them to collect.
-                </div>
-              </div>
-              <div className="detail-block">
-                <div className="detail-label">◦ SOLUTION</div>
-                <div className="detail-body">
-                  A bilingual platform with 7 essential tools — sales, cash flow, expenses, taxes, funding, succession, reviews — in one place. Simple enough for a first-time user. Powerful enough to compete.
-                </div>
-              </div>
-              <div className="detail-block">
-                <div className="detail-label">◦ IMPACT</div>
-                <div className="detail-body">
-                  Created a pathway for small business owners who want to level up but never had the tools. Pivoted from gated tiers to a 14-day free trial after user feedback revealed conversion friction was the real barrier — not price.
-                </div>
-              </div>
-            </div>
-
-            {/* TECH STACK */}
-            <div className="tech-section">
-              <div className="detail-label" style={{marginBottom: "10px"}}>◦ TECH STACK</div>
-              <div className="tech-tags">
-                <span className="tech-tag">Next.js</span>
-                <span className="tech-tag">TypeScript</span>
-                <span className="tech-tag">Supabase</span>
-                <span className="tech-tag">PostgreSQL</span>
-                <span className="tech-tag">Recharts</span>
-                <span className="tech-tag">Tailwind</span>
-              </div>
-            </div>
+          <div className="section-label">— 02 · WORK</div>
+          <div className="project-list">
+            {projects.map((p) => (
+              <ProjectCard key={p.id} project={p} />
+            ))}
           </div>
         </section>
 
@@ -824,7 +973,7 @@ export default function Portfolio() {
             </div>
             <div>
               <div className="skill-group-label">Development</div>
-              <div className="skill-group-body">TypeScript, Next.js, Recharts, Git</div>
+              <div className="skill-group-body">TypeScript, Next.js, Shopify (Liquid), HTML, CSS, JavaScript, Recharts, Git, Cloudflare Pages</div>
             </div>
             <div>
               <div className="skill-group-label">Analytical</div>
