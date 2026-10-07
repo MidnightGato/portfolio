@@ -913,7 +913,10 @@ export default function Portfolio() {
               A Business Analytics student at the University of Texas Rio Grande Valley, studying at the <em>Robert C. Vackar College of Business & Entrepreneurship</em>. I focus on turning small business data into practical decisions.
             </p>
             <p>
-              Bilingual in English and Spanish, currently learning Japanese. Membership Director on the 2026 Side Hustle Society Board of Directors at UTRGV.
+              On campus I work with UTRGV Campus Facilities Operations, pulling inventory and work order data from WebTMA 7, cleaning it in Excel and building Power BI reports on supply usage by department. That analysis is driving a warehouse layout redesign so the most used parts sit closest to the exit.
+            </p>
+            <p>
+              Bilingual in English and Spanish, currently learning Japanese. Membership Director for Side Hustle Society and Information Technology Students of America (ITSA) at UTRGV.
             </p>
           </div>
         </section>
@@ -968,8 +971,8 @@ export default function Portfolio() {
               <div className="skill-group-body">SQL, Excel (advanced), Tableau, Power BI, Python, R</div>
             </div>
             <div>
-              <div className="skill-group-label">Databases</div>
-              <div className="skill-group-body">Supabase (PostgreSQL), Microsoft Access, Data Modeling, Data Cleaning</div>
+              <div className="skill-group-label">Databases & Systems</div>
+              <div className="skill-group-body">Supabase (PostgreSQL), Microsoft Access, WebTMA 7, PeopleSoft, Data Modeling, Data Cleaning</div>
             </div>
             <div>
               <div className="skill-group-label">Development</div>
